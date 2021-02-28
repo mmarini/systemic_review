@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_011801) do
+ActiveRecord::Schema.define(version: 2021_02_28_023148) do
 
   create_table "abstracts", force: :cascade do |t|
     t.text "content"
@@ -26,6 +26,22 @@ ActiveRecord::Schema.define(version: 2021_02_28_011801) do
     t.integer "published_year"
     t.integer "pages"
     t.string "journal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.boolean "relevant"
+    t.integer "citation_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["citation_id"], name: "index_reviews_on_citation_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

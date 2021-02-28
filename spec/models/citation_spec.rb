@@ -11,5 +11,6 @@ describe Citation, type: :model do
 
   describe 'associations', associations: true do
     it { should have_one(:abstract) }
+    it { should have_many(:reviews) }
   end
 end
