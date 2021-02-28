@@ -1,5 +1,13 @@
 <h1>Citations</h1>
 
 <table>
-  <%= render partial: 'citation', collection: @citations %>
-  </table>
+  <thead>
+    <th></th>
+    <th>Title</th>
+    <th>Publised Date</th>
+    <th>Status</th>
+  </thead>
+  <tbody>
+    <%= render partial: 'citation', collection: @citations %>
+  </tbody>
+</table>

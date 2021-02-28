@@ -17,6 +17,19 @@
 
 <p><%= @citation.abstract.content %></p>
 
+<% if @citation.reviews.any? %>
+<table>
+  <thead>
+    <th>User</th>
+    <th>Relevant</th>
+    <th>Reviewed On</th>
+  </thead>
+  <tbody>
+    <%= render partial: 'reviews/review', collection: @citation.reviews %>
+  </tbody>
+</table>
+<% end %>
+
 <% unless @citation.reviewed?(current_user) %>
   <%= form_for @citation, :url => { action: 'review' } do |f| %>
     <%= f.submit 'Relevant' %>
