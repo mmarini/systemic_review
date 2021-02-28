@@ -1,0 +1,18 @@
+<h1><%= @citation.title %></h1>
+
+<dl>
+  <li><%= %></li>
+</dl>
+
+<dl>
+  <dt>Authors</dt>
+  <dd><%= @citation.authors %></dd>
+  <dt>Published Year</dt>
+  <dd><%= @citation.published_year %></dd>
+  <dt>Pages</dt>
+  <dd><%= @citation.pages %></dd>
+  <dt>Journal</dt>
+  <dd><%= @citation.journal %></dd>
+</dl>
+
+<p><%= @citation.abstract.content %></p>
