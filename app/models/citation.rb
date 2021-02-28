@@ -9,4 +9,14 @@ class Citation < ApplicationRecord
 
     'undecided'
   end
+
+  def review!(user, relevant)
+    review = self.reviews.find_by(user: user)
+    review ||= self.reviews.create(user: user, relevant: relevant)
+    review
+  end
+
+  def reviewed?(user)
+    self.reviews.exists?(user: user)
+  end
 end

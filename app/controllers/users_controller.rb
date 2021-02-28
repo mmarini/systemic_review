@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     params.permit(:name)
     user = User.find_or_create_by(name: params[:user][:name])
-    session[:current_user] = user
+    set_current_user(user)
     redirect_to citations_path
   end
 

@@ -16,3 +16,10 @@
 </dl>
 
 <p><%= @citation.abstract.content %></p>
+
+<% unless @citation.reviewed?(current_user) %>
+  <%= form_for @citation, :url => { action: 'review' } do |f| %>
+    <%= f.submit 'Relevant' %>
+    <%= f.submit 'Not relevant' %>
+  <% end %>
+<% end %>

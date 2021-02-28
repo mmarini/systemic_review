@@ -33,7 +33,6 @@ RSpec.describe CitationsController, type: :controller do
       expect(controller).to redirect_to(controller: 'users', action: 'new')
     end
 
-
     it 'assigns @citation' do
       citation = Citation.create
       get :show, params: { id: citation.id }

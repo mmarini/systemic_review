@@ -40,4 +40,37 @@ describe Citation, type: :model do
       expect(citation.status).to eql('undecided')
     end
   end
+
+  describe 'review!' do
+    it 'adds a review to the citation' do
+      user = User.create(name: 'test_user_1')
+      citation = Citation.create(title: 'title')
+      review = citation.review!(user, true)
+      expect(review.relevant).to be_truthy
+      expect(review.user).to eql(user)
+    end
+
+    it 'returns an existing review if trying to re-review for the same user' do
+      user = User.create(name: 'test_user_1')
+      citation = Citation.create(title: 'title')
+      review_1 = citation.review!(user, true)
+      review_2 = citation.review!(user, true)
+      expect(review_1).to eq(review_2)
+    end
+  end
+
+  describe 'reviewed?' do
+    it 'returns true if already reviewed by the user' do
+      user = User.create(name: 'test_user_1')
+      citation = Citation.create(title: 'title')
+      citation.review!(user, true)
+      expect(citation.reviewed?(user)).to be_truthy
+    end
+
+    it 'returns false if there is no existing review by the user' do
+      user = User.create(name: 'test_user_1')
+      citation = Citation.create(title: 'title')
+      expect(citation.reviewed?(user)).to be_falsey
+    end
+  end
 end
