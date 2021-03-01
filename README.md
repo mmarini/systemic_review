@@ -34,3 +34,9 @@ This page displays all the information about the citation, including the abstrac
 At the bottom is a table that shows who has reviewed the citation and when, along with their review status
 
 If the user has not yet reviewed the citation, there will be two buttons at the bottom for Relevant or Not Relevant for the user to mark the citation
+
+## Running tests
+
+Tests have been written using rspec.
+
+To run, `bundle exec rpsec`
