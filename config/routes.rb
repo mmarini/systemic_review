@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     patch 'review', on: :member
   end
 
+  post 'logout', to: 'sessions#destroy', as: 'logout'
+
   root to: 'citations#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
